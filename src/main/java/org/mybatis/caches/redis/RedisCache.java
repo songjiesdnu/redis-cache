@@ -42,10 +42,6 @@ public final class RedisCache implements Cache {
     }
     this.id = id;
     RedisConfig redisConfig = RedisConfigurationBuilder.getInstance().parseConfiguration();
-    // 为了兼容阿里云的redis，去掉了对client命令的调用
-   /* pool = new JedisPool(redisConfig, redisConfig.getHost(), redisConfig.getPort(),
-			redisConfig.getConnectionTimeout(), redisConfig.getPassword(),
-			redisConfig.getDatabase());*/
 	pool = new JedisPool(redisConfig, redisConfig.getHost(), redisConfig.getPort(),
 			redisConfig.getConnectionTimeout(), redisConfig.getSoTimeout(), redisConfig.getPassword(),
 			redisConfig.getDatabase(), redisConfig.getClientName());
